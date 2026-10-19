@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      width: 220px;
+      font-family: system-ui, -apple-system, sans-serif;
+      margin: 0;
+      padding: 14px;
+      background: #f8f9fa;
+      color: #212529;
+    }
+    h3 {
+      margin: 0 0 12px 0;
+      font-size: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #dee2e6;
+      padding-bottom: 8px;
+    }
+    label {
+      font-size: 12px;
+      font-weight: 600;
+      color: #495057;
+      display: block;
+      margin-bottom: 4px;
+    }
+    select, button {
+      width: 100%;
+      padding: 8px 10px;
+      margin-bottom: 10px;
+      border-radius: 6px;
+      border: 1px solid #ced4da;
+      font-size: 13px;
+      box-sizing: border-box;
+    }
+    button {
+      cursor: pointer;
+      font-weight: 600;
+      border: none;
+      transition: opacity 0.15s;
+    }
+    button:hover { opacity: 0.9; }
+    .btn-fill { background: #198754; color: #fff; }
+    .btn-capture { background: #0d6efd; color: #fff; }
+    .btn-options { background: #6c757d; color: #fff; margin-bottom: 0; }
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+    .brand-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #172554;
+}
+
+.brand-logo img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+}
+  </style>
+</head>
+<body>
+  <h3>
+    <span class="brand-logo">
+    <img src="logo.png" alt="FormXpert Logo">
+    <span>FormXpert</span>
+</span>
+    <small><button class="btn-options" id="btnOptions">⚙️</button></small>
+  </h3>
+
+  <label for="profileSelect">Active Profile:</label>
+  <select id="profileSelect"></select>
+
+  <div class="toggle-row">
+    <span>Load on active profile</span>
+    <input type="checkbox" id="autoTriggerToggle">
+  </div>
+
+  <button class="btn-fill" id="btnFillNow">⚡ Fill Form Now</button>
+  <button class="btn-capture" id="btnCapture">➕ Save Filled Form Fields</button>
+  <!--button class="btn-options" id="btnOptions">⚙️ Manage Rules & Profiles</button-->
+
+  <script src="popup.js"></script>
+</body>
+</html>

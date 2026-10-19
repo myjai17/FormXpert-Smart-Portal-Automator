@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FormXpert — Smart Portal Automator</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      margin: 0;
+      padding: 24px;
+      background: #f4f6f9;
+      color: #212529;
+    }
+    .container {
+      max-width: 1150px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 24px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+    h2 { margin-top: 0; border-bottom: 2px solid #e9ecef; padding-bottom: 10px; }
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 18px;
+      background: #f8f9fa;
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px solid #dee2e6;
+    }
+    input, select, button {
+      padding: 7px 10px;
+      border: 1px solid #ced4da;
+      border-radius: 4px;
+      font-size: 13px;
+    }
+    button {
+      cursor: pointer;
+      font-weight: 600;
+      border: none;
+      color: #fff;
+    }
+    .btn-primary { background: #0d6efd; }
+    .btn-success { background: #198754; }
+    .btn-danger { background: #dc3545; }
+    .btn-secondary { background: #6c757d; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 16px;
+    }
+    th, td {
+      border: 1px solid #dee2e6;
+      padding: 8px;
+      text-align: left;
+      font-size: 13px;
+    }
+    th { background: #e9ecef; }
+    td input, td select { width: 100%; box-sizing: border-box; }
+    .status-msg {
+      color: #198754;
+      font-weight: 600;
+      margin-left: 10px;
+      display: none;
+    }
+
+    .brand-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #172554;
+}
+
+.brand-logo img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <span class="brand-logo">
+    <img src="logo.png" alt="FormXpert Logo">
+    FormXpert — Form Rules & Profile Manager
+  </span>
+    <div class="toolbar">
+      <div>
+        <strong>Filter Profile:</strong>
+        <select id="filterProfile"></select>        
+        <button class="btn-danger" id="btnDeleteProfile">Delete Profile</button>
+      </div>
+      <div>
+        <strong> Add New Profile:</strong>
+        <input type="text" id="newProfileName" placeholder="New Profile Name">
+        <button class="btn-primary" id="btnAddProfile">+ Add Profile</button>
+      </div>
+      <div style="margin-left: auto; display: flex; gap: 12px; align-items: center;">
+        <label><input type="checkbox" id="chkSound"> Play Sound</label>
+        <label>Delay (ms): <input type="number" id="numDelay" style="width: 70px;" value="300"></label>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 12%;">Profile</th>
+          <th style="width: 11%;">Type</th>
+          <th style="width: 24%;">Name / ID / Selector / Regex</th>
+          <th style="width: 25%;">Value / JS Code</th>
+          <th style="width: 15%;">Site Filter (Optional)</th>
+          <th style="width: 8%;">Mode</th>
+          <th style="width: 5%;">Del</th>
+        </tr>
+      </thead>
+      <tbody id="rulesBody"></tbody>
+    </table>
+
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <div>
+        <button class="btn-primary" id="btnAddRule">+ Add New Rule</button>
+        <button class="btn-success" id="btnSaveAll">💾 Save All Changes</button>
+        <span class="status-msg" id="saveStatus">✔ Saved Successfully!</span>
+      </div>
+      <div>
+        <button class="btn-secondary" id="btnExport">⬇️ Export JSON</button>
+        <input type="file" id="fileImport" accept=".json" style="display: none;">
+        <button class="btn-secondary" id="btnImport">⬆️ Import JSON</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>
